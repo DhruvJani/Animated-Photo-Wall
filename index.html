@@ -10,14 +10,159 @@
 <link rel="icon" type="image/png"  href="http://dhruvjani.in/icon/favicon-32x32.png">
 </head>
 <body>
- <center>
-  Demo
- </center>
+ <div id="header">
+ 	<div id="header_center">
+     <div id="top_menu">
+         	<a href="" class="active">Home</a>
+          <a href="">Photography</a>
+          <a href="">Travel Blog</a>
+     </div>
+  </div>
+ </div>
+ 
+ <div id="main_wrapper">
+
+ 	<div id="top_image">
+  </div>
+
+ 	 <div class="back_image tiny1">
+   		<img src="images/tiny1.jpg" width="298" height="168" />
+   </div>
+     <div class="back_image tiny2">
+ 	  <img src="images/tiny2.jpg" width="298" height="168" />
+     </div>
+     <div class="back_image tiny3">
+ 	  <img src="images/tiny3.jpg" width="298" height="168" />
+     </div>
+     <div class="back_image tiny4">
+ 	  <img src="images/tiny4.jpg" width="298" height="168" />
+     </div>
+     <div class="back_image tiny5">
+ 	  <img src="images/tiny5.jpg" width="298" height="168" />
+     </div>
+     <div class="back_image tiny6">
+ 	  <img src="images/tiny6.jpg" width="298" height="168" />
+     </div>
+     <div class="back_image tiny7">
+ 	  <img src="images/tiny7.jpg" width="298" height="168" />
+     </div>
+     <div class="back_image tiny8">
+ 	  <img src="images/tiny8.jpg" width="298" height="168" />
+     </div>
+     <div class="back_image tiny9">
+ 	  <img src="images/tiny9.jpg" width="298" height="168" />
+     </div>
+     <div class="back_image tiny10">
+ 	  <img src="images/tiny10.jpg" width="298" height="168" />
+     </div>
+     <div class="back_image tiny11">
+ 	  <img src="images/tiny11.jpg" width="298" height="168" />
+     </div>
+     <div class="back_image tiny12">
+ 	  <img src="images/tiny12.jpg" width="298" height="168" />
+     </div>
+     <div class="back_image tiny13">
+ 	  <img src="images/tiny13.jpg" width="298" height="168" />
+     </div>
+     <div class="back_image tiny14">
+   		<img src="images/tiny14.jpg" width="298" height="168" />
+     </div>
+     <div class="back_image tiny15">
+ 	  <img src="images/tiny15.jpg" width="298" height="168" />
+     </div>
+     <div class="back_image tiny16">
+ 	  <img src="images/tiny16.jpg" width="298" height="168" />
+     </div>
+     <div class="back_image tiny17">
+ 	  <img src="images/tiny17.jpg" width="298" height="168" />
+     </div>
+     <div class="back_image tiny18">
+ 	  <img src="images/tiny18.jpg" width="298" height="168" />
+     </div>
+     <div class="back_image tiny19">
+   		<img src="images/tiny19.jpg" width="298" height="168" />
+     </div>
+     <div class="back_image tiny20">
+   		<img src="images/tiny20.jpg" width="298" height="168" />
+     </div>
+     <div class="back_image tiny21">
+   		<img src="images/tiny21.jpg" width="298" height="168" />
+     </div>
+     <div class="back_image tiny22">
+   		<img src="images/tiny22.jpg" width="298" height="168" />
+     </div>
+     <div class="back_image tiny23">
+   		<img src="images/tiny23.jpg" width="298" height="168" />
+     </div>
+     <div class="back_image tiny24">
+   		<img src="images/tiny24.jpg" width="298" height="168" />
+     </div>
+     <div class="back_image tiny25">
+   		<img src="images/tiny25.jpg" width="298" height="168" />
+     </div>
+ </div>
+
  <div id="footer_logo">
  <a href="http://dhruvjani.in" target="_new"><img src="http://dhruvjani.in/icon/favicon-96x96.png" title="dhruvjani.in" width="80" height="80" border="0" /></a>
  </div>
 
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <script type="text/javascript">
+ $(window).load(function() {
+ 	$("#main_wrapper").fadeTo(300,1);
+ 	$("#header").fadeTo(300,1);
 
+ 	var windowW = $(window).width();
+
+ 		if(windowW >= 1200){
+ 			var w = 4;
+ 			var h = 170;
+ 		}
+ 		if(windowW < 1200 && windowW >= 900){
+ 			var w = 3;
+ 			var h = 170;
+ 		}
+ 		if(windowW < 900){
+ 			var w = 4;
+ 			var h = 85;
+ 		}
+ 		var windowH = $(window).height();
+ 		var wrapperH = $('#main_content').height();
+ 		if(windowH < (wrapperH+50)) {
+ 			$('#main_wrapper').css({'height':wrapperH+'px'});
+ 		} else if(windowH > wrapperH) {
+ 			$('#main_wrapper').css({'height':(windowH-51)+'px'});
+ 			$('#top_image').css({'height':(windowH-51)+'px'});
+ 		}
+ 		var images = (Math.floor(windowH/h)+1)*(w);
+
+ 		$(window).resize(function(){
+ 		var windowH = $(window).height();
+ 		var wrapperH = $('#main_content').height();
+ 		if(windowH < (wrapperH+50)) {
+ 			$('#main_wrapper').css({'height':wrapperH+'px'});
+ 		} else if(windowH > wrapperH) {
+ 			$('#main_wrapper').css({'height':(windowH-51)+'px'});
+ 			$('#top_image').css({'height':(windowH-51)+'px'});
+ 		}
+ 		})
+
+ 	function image_loop() {
+ 	var num = Math.floor((Math.random() * images) + 1);
+ 	var img = Math.floor((Math.random() * images) + 1);
+
+ 	$(".tiny"+num).fadeTo(1000,1);
+ 	$(".tiny"+num).delay(1500).fadeTo(1000,0.1);
+ 	setTimeout(image_loop, 1000);
+ 	}
+
+ 	$('.back_image').animate({'opacity':'0.1'}, 1000, 'linear', function (){},500);
+
+ 	image_loop();
+
+ });
+
+
+ </script>
 </body>
 </html>
