@@ -2,12 +2,69 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width:320px, user-scalable=no">
-<meta name="viewport" content="width=device-width:320px, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Animated Photo Wall by Dhruv Jani</title>
 <link href="style.css" rel="stylesheet" type="text/css" />
 <link rel="icon" type="image/png"  href="http://dhruvjani.in/icon/favicon-32x32.png">
+
+<script type="text/javascript" src="jquary.js"></script>
+<script type="text/javascript">
+$(window).load(function() {
+	$("#main_wrapper").fadeTo(300,1);
+	$("#header").fadeTo(300,1);
+
+	var windowW = $(window).width();
+
+		if(windowW >= 1200){
+			var w = 4;
+			var h = 170;
+		}
+		if(windowW < 1200 && windowW >= 900){
+			var w = 3;
+			var h = 170;
+		}
+		if(windowW < 900){
+			var w = 4;
+			var h = 85;
+		}
+		var windowH = $(window).height();
+		var wrapperH = $('#main_content').height();
+		if(windowH < (wrapperH+50)) {
+			$('#main_wrapper').css({'height':wrapperH+'px'});
+		} else if(windowH > wrapperH) {
+			$('#main_wrapper').css({'height':(windowH-51)+'px'});
+			$('#top_image').css({'height':(windowH-51)+'px'});
+		}
+		var images = (Math.floor(windowH/h)+1)*(w);
+
+		$(window).resize(function(){
+		var windowH = $(window).height();
+		var wrapperH = $('#main_content').height();
+		if(windowH < (wrapperH+50)) {
+			$('#main_wrapper').css({'height':wrapperH+'px'});
+		} else if(windowH > wrapperH) {
+			$('#main_wrapper').css({'height':(windowH-51)+'px'});
+			$('#top_image').css({'height':(windowH-51)+'px'});
+		}
+		})
+
+	function image_loop() {
+	var num = Math.floor((Math.random() * images) + 1);
+	var img = Math.floor((Math.random() * images) + 1);
+
+	$(".tiny"+num).fadeTo(1000,1);
+	$(".tiny"+num).delay(1500).fadeTo(1000,0.1);
+	setTimeout(image_loop, 1000);
+	}
+
+	$('.back_image').animate({'opacity':'0.1'}, 1000, 'linear', function (){},500);
+
+	image_loop();
+
+});
+</script>
+
 </head>
 <body>
  <div id="header">
@@ -19,7 +76,7 @@
      </div>
   </div>
  </div>
- 
+
  <div id="main_wrapper">
 
  	<div id="top_image">
@@ -106,63 +163,5 @@
  <a href="http://dhruvjani.in" target="_new"><img src="http://dhruvjani.in/icon/favicon-96x96.png" title="dhruvjani.in" width="80" height="80" border="0" /></a>
  </div>
 
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
- <script type="text/javascript">
- $(window).load(function() {
- 	$("#main_wrapper").fadeTo(300,1);
- 	$("#header").fadeTo(300,1);
-
- 	var windowW = $(window).width();
-
- 		if(windowW >= 1200){
- 			var w = 4;
- 			var h = 170;
- 		}
- 		if(windowW < 1200 && windowW >= 900){
- 			var w = 3;
- 			var h = 170;
- 		}
- 		if(windowW < 900){
- 			var w = 4;
- 			var h = 85;
- 		}
- 		var windowH = $(window).height();
- 		var wrapperH = $('#main_content').height();
- 		if(windowH < (wrapperH+50)) {
- 			$('#main_wrapper').css({'height':wrapperH+'px'});
- 		} else if(windowH > wrapperH) {
- 			$('#main_wrapper').css({'height':(windowH-51)+'px'});
- 			$('#top_image').css({'height':(windowH-51)+'px'});
- 		}
- 		var images = (Math.floor(windowH/h)+1)*(w);
-
- 		$(window).resize(function(){
- 		var windowH = $(window).height();
- 		var wrapperH = $('#main_content').height();
- 		if(windowH < (wrapperH+50)) {
- 			$('#main_wrapper').css({'height':wrapperH+'px'});
- 		} else if(windowH > wrapperH) {
- 			$('#main_wrapper').css({'height':(windowH-51)+'px'});
- 			$('#top_image').css({'height':(windowH-51)+'px'});
- 		}
- 		})
-
- 	function image_loop() {
- 	var num = Math.floor((Math.random() * images) + 1);
- 	var img = Math.floor((Math.random() * images) + 1);
-
- 	$(".tiny"+num).fadeTo(1000,1);
- 	$(".tiny"+num).delay(1500).fadeTo(1000,0.1);
- 	setTimeout(image_loop, 1000);
- 	}
-
- 	$('.back_image').animate({'opacity':'0.1'}, 1000, 'linear', function (){},500);
-
- 	image_loop();
-
- });
-
-
- </script>
 </body>
 </html>

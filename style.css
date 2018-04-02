@@ -21,6 +21,7 @@ body::-webkit-scrollbar-thumb {
 	position:fixed;
 	bottom:15px;
 	right:20px;
+ z-index: 1000;
 }
 #header {
 	width:100%;
